@@ -1,0 +1,38 @@
+# Dynamic---Encryption---Decryption-of-files
+
+It is "Dynamic Encrption and Decryption of files using Python".
+
+All the files in the folder are encrypted and decrypted, using a symmetric cipher.
+Hashes contain dynamic keys driven by user to enhance security. 
+Cipher block chaining and initialized vector were used for Python scripting. 
+Operating system interface and System specific parameters were used accordingly. 
+
+In this the Cipher used is AES and hash used is MD5. The other possible combinations which could be possible used are (AES , SHA256)  and (AES , MD4).  
+
+The other possible combinations are also possible. Like  Cipher - DES3, RSA, Blowfish, ARC2, CAST, etc. 
+And for Hash, like HMAC, SHA384, RIPEMD-160, etc.
+
+Each combination needs to managed according to the key and the initialization vector requirements. 
+Choose the combination such that Cipher block chaining, Key and Initialization vector are intact. 
+
+#Some important facts:
+
+- Save and Run the code in a seperate directory. Such that it doesn't effect your work flow. 
+
+- You can use any key for this encryption. But make sure you use the same "KEY" for both the encryption and decryption. Or the end results may vary.
+
+- Rememeber the key. If you forget the key. It is highly not possible to retrieve back your files. Because the AES is a beast. 
+
+- It is recommended to run this script on a "Virtual Machine".  
+
+In this script, the code is devised for the single encryption and single decryption.
+
+#For Mutiple Encryption and Decryption with this code
+- For every encryption remove the added word "(Secured)" except for last encryption. You can any other keys.
+- For every decryption add the word "(Secured)" consecutively until the decryption is ended. 
+- But make sure you keys in reverse order of what you have used for encryption.
+
+#Refer videos for help. 
+
+#Happy Encryption.
+#Save your privacy. #LOL
