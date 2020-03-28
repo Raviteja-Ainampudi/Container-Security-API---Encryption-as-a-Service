@@ -39,7 +39,6 @@ def encryption(f_name=None):
         elif file_name.startswith("(Secured)"):
             flash(f"File {file_name} was already encrypted", "#800080")
         else:
-            print("Password", password)
 
             def file_encryption(file_name):
                 output_file = ed_object.encrypt("{: <32}".format(password).encode(), file_name)
@@ -67,7 +66,7 @@ def encryption(f_name=None):
     return render_template('enc_result.html', del_option=del_option)
 
 
-@app.route("/decrypt/<string:f_name>")
+@app.route("/decrypt/<string:f_name>", methods=["POST", "GET"])
 def decryption(f_name=None):
     file_name = "".join(list(map(chr, list(map(int, f_name.split("?"))))))
     print(file_name)
@@ -77,22 +76,32 @@ def decryption(f_name=None):
         ed_object = EncryptionDecryption.DynamicEncryptionAndDecryption()
         if not os.path.exists(file_name):
             flash(f"Given file {file_name} does not exist", "#800080")
-        elif not file_name.startswith("(Secured)"):
+        elif not file_name.split("/")[-1].startswith("(Secured)"):
             flash(f"File {file_name} was NOT encrypted", "#800080")
         else:
-            print("Password", password)
-            def file_encryption(file_name):
-                output_file = ed_object.encrypt("{: <32}".format(password).encode(), file_name)
-                flash(f"Done Encryption of {file_name}", "#00008B")
-                flash(f"The Encrypted file name is {output_file}", "#006400")
+
+            def file_decryption(file_name):
+                output_file = ed_object.decrypt("{: <32}".format(password).encode(), file_name)
+                flash(f"Done Deryption of {file_name}", "#00008B")
+                flash(f"The Decrypted file name is {output_file}", "#006400")
                 if del_option == "True":
                     os.remove(file_name)
                     flash(f"The file - {file_name} has been removed", "#2F4F4F")
                 return
             if os.path.isfile(file_name):
-                file_encryption(file_name)
+                file_decryption(file_name)
             elif os.path.isdir(file_name):
-
+                folder_files = ed_object.allfiles(file_name)
+                print(folder_files)
+                for Tfile in folder_files:
+                    if os.path.isfile(Tfile):
+                        file_decryption(Tfile)
+                for Tfile in folder_files:
+                    if os.path.isdir(Tfile):
+                        os.rename(Tfile, Tfile.replace("(Secured)", ''))
+                os.rename(file_name, file_name.replace("(Secured)", ''))
+            else:
+                pass
     return render_template('dec_result.html', del_option=del_option)
 
 
@@ -112,13 +121,6 @@ def list_files():
     return render_template('list_files.html',
                            all_avail_files=available_files,
                            default_folder=default_folder)
-
-
-@app.route('/result.html/<f_name>', methods=['POST'])
-def read_form(f_name=None):
-    if request.method == "POST":
-        print("Hello")
-    return render_template('result.html')
 
 
 if __name__ == "__main__":

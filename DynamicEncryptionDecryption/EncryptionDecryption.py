@@ -37,12 +37,13 @@ class DynamicEncryptionAndDecryption(object):
         return outFile
 
     def decrypt(self, key, filename):
-        outFile = os.path.join(os.path.dirname(filename), os.path.basename(filename[9:]))
+        outFile = os.path.join(os.path.dirname(filename),
+                               os.path.basename(filename).replace("(Secured)", ""))
+        print(outFile)
         chunksize = 128 * 1024
         with open(filename, "rb") as infile:
             filesize = infile.read(16)
             IV = infile.read(16)
-
             decryptor = AES.new(key, AES.MODE_CBC, IV)
 
             with open(outFile, "wb") as outfile:
@@ -50,10 +51,9 @@ class DynamicEncryptionAndDecryption(object):
                     chunk = infile.read(chunksize)
                     if len(chunk) == 0:
                         break
-
                     outfile.write(decryptor.decrypt(chunk))
-
                 outfile.truncate(int(filesize))
+        return outFile
 
     @staticmethod
     def allfiles(path=os.getcwd()):
@@ -134,6 +134,6 @@ def choices():
 
 
 if __name__ == "__main__":
-    ed = DynamicEncryptionAndDecryption()
-    ed.encrypt(MD5.new(bytes("test".encode('utf-16be'))).digest(), "/home/osboxes/PycharmProjects/Dynamic-Encryption-And-Decryption-of-Any-files/random.txt")
-    #choices()
+    # choices()
+    pass
+
