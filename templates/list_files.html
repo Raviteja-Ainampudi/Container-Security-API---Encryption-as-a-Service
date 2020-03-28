@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project DEDF - List Files </title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <h1>Dynamic Encryption and Decryption of Any Files  </h1>
+    <br>
+    <p><a href="{{ url_for('home_page') }}"> Home Page </a></p>
+    <br>
+    <form name="myForm" action="" method="post" onsubmit="">
+    <p>  <label for="foldername">Folder Name:</label>
+  <input type="text" id="foldername" name="foldername">
+    </p>
+        <p><input type=submit value=Submit></p> <br><br>
+    </form>
+<p>
+    <p> Available Files On {{ default_folder }} are:</p>
+    {% set count = 1 %}
+    {% for file in all_avail_files %}
+        {{loop.index}} {{file}}
+        {% set count = count + 1 %}
+        <br>
+    {% endfor %}
+</body>
+</html>

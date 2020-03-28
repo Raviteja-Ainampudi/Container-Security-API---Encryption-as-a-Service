@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/python3
+
 """
 Created on Wed Aug 03 15:34:06 2016
 
@@ -6,6 +7,7 @@ Created on Wed Aug 03 15:34:06 2016
 """
 from Crypto.Hash import MD5
 from Crypto.Cipher import AES
+from Crypto import Random
 import os, random, sys
 
 
@@ -17,26 +19,22 @@ class DynamicEncryptionAndDecryption(object):
         chunksize = 128 * 1024
         outFile = os.path.join(os.path.dirname(filename), "(Secured)" + os.path.basename(filename))
         filesize = str(os.path.getsize(filename)).zfill(16)
-        IV = ''
-
-        for i in range(16):
-            IV += chr(random.randint(0, 0xFF))
+        IV = Random.new().read(AES.block_size)
+        print(IV, len(IV))
         encryptor = AES.new(key, AES.MODE_CBC, IV)
 
         with open(filename, "rb") as infile:
             with open(outFile, "wb") as outfile:
-                outfile.write(filesize)
+                outfile.write(filesize.encode('utf-8'))
                 outfile.write(IV)
                 while True:
                     chunk = infile.read(chunksize)
-
                     if len(chunk) == 0:
                         break
-
                     elif len(chunk) % 16 != 0:
-                        chunk += ' ' * (16 - (len(chunk) % 16))
-
+                        chunk += b' ' * (16 - (len(chunk) % 16))
                     outfile.write(encryptor.encrypt(chunk))
+        return outFile
 
     def decrypt(self, key, filename):
         outFile = os.path.join(os.path.dirname(filename), os.path.basename(filename[9:]))
@@ -58,11 +56,13 @@ class DynamicEncryptionAndDecryption(object):
                 outfile.truncate(int(filesize))
 
     @staticmethod
-    def allfiles():
+    def allfiles(path=os.getcwd()):
         allFiles = []
-        for root, subfiles, files in os.walk(os.getcwd()):
-            for names in files:
-                allFiles.append(os.path.join(root, names))
+        for root, subfiles, files in os.walk(path):
+            for dir_name in subfiles:
+                allFiles.append(os.path.join(root, dir_name))
+            for file_name in files:
+                allFiles.append(os.path.join(root, file_name))
         return allFiles
 
 
@@ -75,8 +75,7 @@ def choices():
         perform_multiple_encryption = False
         password = input("Please enter the `Password/Key` to be used: ")
     else:
-
-    encFiles = ed_object.allfiles()
+        encFiles = ed_object.allfiles()
 
     if choice == "E":
         print("")
@@ -125,7 +124,7 @@ def choices():
     elif choice == "L":
         print(" \n The files present in the current directory are: ")
         file_list = []
-        for content in os.listdir("."):
+        for content in os.listdir(".."):
             file_list.append(content)
         print(file_list)
 
@@ -135,4 +134,6 @@ def choices():
 
 
 if __name__ == "__main__":
-    choices()
+    ed = DynamicEncryptionAndDecryption()
+    ed.encrypt(MD5.new(bytes("test".encode('utf-16be'))).digest(), "/home/osboxes/PycharmProjects/Dynamic-Encryption-And-Decryption-of-Any-files/random.txt")
+    #choices()

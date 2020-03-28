@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Project DEDF - Home </title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+
+<h1>Dynamic Encryption and Decryption of Any Files  </h1>
+<br>
+
+<p><a href="{{ url_for('list_files') }}"> List Available Files </a></p>
+<br>
+
+<form name="myForm" action="" method="post" onsubmit="">
+    <p>  <label for="fname">File Name:</label>
+        <input type="text" id="fname" name="fname">
+    </p>
+    <p>   <label for="pwd">Password:</label>
+        <input type="password" id="pwd" name="pwd">   <br><br>
+<p>
+<input type="radio" name="options" id="Encrypt" value="Encrypt"> Encrypt </input><br>
+<input type="radio" name="options" id="Decrypt" value="Decrypt"> Decrypt </input><br>
+</p>
+<p><input type=submit value=Next></p>
+</form>
+
+</body>
+</html>

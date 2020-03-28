@@ -1,0 +1,27 @@
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+  font-size:15px;
+}
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+wrapper
+{
+  border: 1px solid black;
+  display: inline-block;
+  padding:20px;
+}
+
+.failure {
+    color: red
+}

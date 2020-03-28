@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project DEDF - Trueion </title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <h1>Dynamic Encryption and Decryption of Any Files  </h1>
+    <br>
+    <p><a href="{{ url_for('home_page') }}"> Home Page </a></p>
+    
+    <form name="myForm" action="" method="post" onsubmit="">
+    <p> Delete the original file? <br>
+        <input type="radio" name="deloptions" id="True" value="True"> True </input><br>
+        <input type="radio" name="deloptions" id="False" value="False" checked="checked"> False </input><br>
+    </p>
+    <p><input type=submit value=Next></p>
+    </form>
+
+    {% block content %}
+    <div class="container" style="background-color:lightyellow">
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="alert" style="font-size:xx-large;color:{{ category }}">
+            {{ message }}
+            <br> <br>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
