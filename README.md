@@ -21,7 +21,7 @@ Choose the combination such that Cipher block chaining, Key and Initialization v
 
 - You can use any key for this encryption. But make sure you use the same "KEY" for both the encryption and decryption. Or the end results may vary.
 
-- Rememeber the key. If you forget the key. It is highly not possible to retrieve back your files. Because the AES is a beast. 
+- Remember the key. If you forget the key. It is highly not possible to retrieve back your files. Because the AES is a beast. 
 
 - It is recommended to run this script on a "Virtual Machine".  
 
@@ -36,3 +36,11 @@ In this script, the code is devised for the single encryption and single decrypt
 
 #Happy Encryption.
 #Save your privacy. #LOL
+
+#Docker Commands
+To build the docker image:
+> docker build -f Dockerfile -t hello-python:latest .
+
+To run the docker container on background 
+> docker run -d -p 5001:5000 hello-python
+

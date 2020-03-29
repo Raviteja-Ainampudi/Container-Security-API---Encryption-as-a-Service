@@ -8,7 +8,8 @@ Created on Wed Aug 03 15:34:06 2016
 from Crypto.Hash import MD5
 from Crypto.Cipher import AES
 from Crypto import Random
-import os, random, sys
+import os
+import sys
 
 
 class DynamicEncryptionAndDecryption(object):

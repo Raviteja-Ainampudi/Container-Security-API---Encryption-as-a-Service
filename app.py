@@ -76,7 +76,9 @@ def decryption(f_name=None):
         ed_object = EncryptionDecryption.DynamicEncryptionAndDecryption()
         if not os.path.exists(file_name):
             flash(f"Given file {file_name} does not exist", "#800080")
-        elif not file_name.split("/")[-1].startswith("(Secured)"):
+        elif os.path.isfile(file_name) and not file_name.split("/")[-1].startswith("(Secured)"):
+            flash(f"File {file_name} was NOT encrypted", "#800080")
+        elif os.path.isdir(file_name) and not file_name.split("/")[-1].endswith("(Secured)"):
             flash(f"File {file_name} was NOT encrypted", "#800080")
         else:
 
@@ -98,7 +100,9 @@ def decryption(f_name=None):
                         file_decryption(Tfile)
                 for Tfile in folder_files:
                     if os.path.isdir(Tfile):
-                        os.rename(Tfile, Tfile.replace("(Secured)", ''))
+                        parent_path = os.path.dirname(Tfile)
+                        base_path = os.path.basename(Tfile).replace("(Secured)", '')
+                        os.rename(Tfile, os.path.join(parent_path, base_path))
                 os.rename(file_name, file_name.replace("(Secured)", ''))
             else:
                 pass
