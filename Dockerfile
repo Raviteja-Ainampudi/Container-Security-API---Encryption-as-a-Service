@@ -1,5 +1,7 @@
 FROM python:3.7
 
+RUN apt-get update && apt-get dist-upgrade && apt-get auto-remove
+
 # Create app directory
 RUN mkdir /app
 WORKDIR /app
@@ -8,7 +10,6 @@ WORKDIR /app
 COPY ./requirements.txt ./
 
 RUN pip install -r requirements.txt
-RUN export FLASK_APP=/app/app.py
 
 COPY . /app
 
