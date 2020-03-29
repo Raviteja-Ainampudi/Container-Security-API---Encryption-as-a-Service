@@ -1,6 +1,10 @@
-# Dynamic---Encryption---Decryption-of-files
+# Container Security - Dynamic Encryption And Decryption of files
 
-It is "Dynamic Encrption and Decryption of files using Python".
+This project provides a Python's FLASK API to perform Dynamic Encryption and Decryption of any file on OS File systems.
+
+And it can be integrated into containers like Docker and Kubernetes. And it works perfectly fine on any virtual machine, compute instance or on-prem machine. 
+
+# DynamicEncrptionDecryption
 
 All the files in the folder are encrypted and decrypted, using a symmetric cipher.
 Hashes contain dynamic keys driven by user to enhance security. 
@@ -32,15 +36,18 @@ In this script, the code is devised for the single encryption and single decrypt
 - For every decryption add the word "(Secured)" consecutively until the decryption is ended. 
 - But make sure you keys in reverse order of what you have used for encryption.
 
-#Refer videos for help. 
-
-#Happy Encryption.
-#Save your privacy. #LOL
-
-#Docker Commands
+# Docker Commands
 To build the docker image:
 > docker build -f Dockerfile -t hello-python:latest .
 
 To run the docker container on background 
 > docker run -d -p 5001:5000 hello-python
+
+
+#Refer videos for help. 
+
+#Happy Encryption.
+#Save your privacy. #LOL
+
+
 

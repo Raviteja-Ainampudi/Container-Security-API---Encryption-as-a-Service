@@ -1,6 +1,6 @@
 FROM python:3.7
 
-RUN apt-get update && apt-get dist-upgrade && apt-get auto-remove
+RUN apt-get update -y
 
 # Create app directory
 RUN mkdir /app
