@@ -19,22 +19,19 @@ And for Hash, like HMAC, SHA384, RIPEMD-160, etc.
 Each combination needs to managed according to the key and the initialization vector requirements. 
 Choose the combination such that Cipher block chaining, Key and Initialization vector are intact. 
 
-#Some important facts:
+# Key Points to avoid :
 
 - Save and Run the code in a separate directory. Such that it doesn't effect your work flow. 
 
 - You can use any key for this encryption. But make sure you use the same "KEY" for both the encryption and decryption. Or the end results may vary.
 
-- Remember the key. If you forget the key. It is highly not possible to retrieve back your files. Because the AES is a beast. 
+- Remember the key. If you forget the key. It is highly impossible to retrieve back your files. Because the AES is a beast. :boom:
 
 - It is recommended to run this script on a "Virtual Machine".  
 
-In this script, the code is devised for the single encryption and single decryption.
-
-#For Mutiple Encryption and Decryption with this code
-- For every encryption remove the added word "(Secured)" except for last encryption. You can any other keys.
-- For every decryption add the word "(Secured)" consecutively until the decryption is ended. 
-- But make sure you keys in reverse order of what you have used for encryption.
+# For Mutiple Encryption and Decryption with this code
+- Encryption can repeated by passing the subsequent filenames. 
+- For decryption, make sure you keys in reverse order of what you have used for encryption.
 
 # Docker Commands
 To build the docker image:
@@ -45,7 +42,7 @@ To run the docker container on background
 
 
 # Happy Encryption  :joy: :v:
-# Save your privacy :muscle: #LOL :metal:
+# :no_pedestrians: :do_not_litter: #LOL Save your privacy :muscle: :metal:
 
 
 
