@@ -1,4 +1,4 @@
-# Container Security - Dynamic Encryption And Decryption of files
+# Container Security API for Dynamic Encryption And Decryption of files
 
 This project provides a Python's FLASK API to perform Dynamic Encryption and Decryption of any file on OS File systems.
 
@@ -21,7 +21,7 @@ Choose the combination such that Cipher block chaining, Key and Initialization v
 
 #Some important facts:
 
-- Save and Run the code in a seperate directory. Such that it doesn't effect your work flow. 
+- Save and Run the code in a separate directory. Such that it doesn't effect your work flow. 
 
 - You can use any key for this encryption. But make sure you use the same "KEY" for both the encryption and decryption. Or the end results may vary.
 
@@ -44,10 +44,8 @@ To run the docker container on background
 > docker run -d -p 5001:5000 hello-python
 
 
-#Refer videos for help. 
-
-#Happy Encryption.
-#Save your privacy. #LOL
+# Happy Encryption  :joy: :v:
+# Save your privacy :muscle: #LOL :metal:
 
 
 
