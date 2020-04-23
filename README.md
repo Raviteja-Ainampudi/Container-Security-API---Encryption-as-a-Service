@@ -19,7 +19,7 @@ And for Hash, like HMAC, SHA384, RIPEMD-160, etc.
 Each combination needs to managed according to the key and the initialization vector requirements. 
 Choose the combination such that Cipher block chaining, Key and Initialization vector are intact. 
 
-# Key Points to avoid :
+# Key points to remember 
 
 - Save and Run the code in a separate directory. Such that it doesn't effect your work flow. 
 
