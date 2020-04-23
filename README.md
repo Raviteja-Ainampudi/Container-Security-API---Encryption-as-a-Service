@@ -42,7 +42,7 @@ To run the docker container on background
 
 
 # Happy Encryption  :joy: :v:
-# :no_pedestrians: :do_not_litter: #LOL Save your privacy :muscle: :metal:
+# :no_pedestrians: :do_not_litter: Save your privacy :muscle: :metal:
 
 
 
