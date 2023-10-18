@@ -20,10 +20,16 @@
 <p>
     <p> Available Files On {{ default_folder }} are:</p>
     {% set count = 1 %}
+    <table style="border: 5px solid #990000; border-collapse: collapse">
+        <TH> Index </TH>
+        <TH> Filename </TH>
     {% for file in all_avail_files %}
-        {{loop.index}} {{file}}
+        <TR>
+            <TD class="c1"> {{loop.index}} </TD>
+            <TD> {{file}} </TD>
+        </TR>
         {% set count = count + 1 %}
-        <br>
     {% endfor %}
+    </table>>
 </body>
 </html>

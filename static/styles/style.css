@@ -7,3 +7,10 @@ h1 {
 p {
   color: red;
 }
+tr {
+    border: solid 3px green;
+}
+td {
+    border: solid 2px orange;
+}
+

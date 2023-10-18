@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 import os
-from flask import Flask, request, render_template, session, redirect, url_for, flash
-from DynamicEncryptionDecryption import EncryptionDecryption
 
+from flask import Flask, request, render_template, session, redirect, url_for, flash
+
+from DynamicEncryptionDecryption import EncryptionDecryption
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(32)
@@ -32,7 +33,7 @@ def encryption(f_name=None):
     print(file_name)
     del_option = None
     if request.method == "POST":
-        del_option, session['encryption_file_option'] = [request.form['deloptions']]*2
+        del_option, session['encryption_file_option'] = [request.form['deloptions']] * 2
         ed_object = EncryptionDecryption.DynamicEncryptionAndDecryption()
         if not os.path.exists(file_name):
             flash(f"Given file {file_name} does not exist", "#800080")
@@ -48,6 +49,7 @@ def encryption(f_name=None):
                     os.remove(file_name)
                     flash(f"The file - {file_name} has been removed", "#2F4F4F")
                 return
+
             if os.path.isfile(file_name):
                 file_encryption(file_name)
             elif os.path.isdir(file_name):
@@ -90,6 +92,7 @@ def decryption(f_name=None):
                     os.remove(file_name)
                     flash(f"The file - {file_name} has been removed", "#2F4F4F")
                 return
+
             if os.path.isfile(file_name):
                 file_decryption(file_name)
             elif os.path.isdir(file_name):
@@ -128,4 +131,4 @@ def list_files():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port="5000", debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

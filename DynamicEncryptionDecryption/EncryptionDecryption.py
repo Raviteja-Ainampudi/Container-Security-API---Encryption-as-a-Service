@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 """
-Created on Wed Aug 03 15:34:06 2016
+First Created on Wed Aug 03 15:34:06 2016
 
 @author: RAVI TEJA AINAMPUDI
 """
-from Crypto.Hash import MD5
-from Crypto.Cipher import AES
-from Crypto import Random
 import os
 import sys
+
+from Crypto import Random
+from Crypto.Cipher import AES
+from Crypto.Hash import MD5
 
 
 class DynamicEncryptionAndDecryption(object):
@@ -135,6 +136,5 @@ def choices():
 
 
 if __name__ == "__main__":
-    # choices()
+    choices()
     pass
-
