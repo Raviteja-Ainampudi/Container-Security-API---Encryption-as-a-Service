@@ -35,7 +35,7 @@ Choose the combination such that Cipher block chaining, Key and Initialization v
 
 # For Mutiple Encryption and Decryption with this code
 
-- Encryption can repeated by passing the subsequent filenames.
+- Encryption can be repeated by passing the subsequent filenames.
 - For decryption, make sure you keys in reverse order of what you have used for encryption.
 
 # Docker Commands

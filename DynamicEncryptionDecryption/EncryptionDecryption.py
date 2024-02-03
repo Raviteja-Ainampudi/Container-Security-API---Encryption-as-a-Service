@@ -136,5 +136,5 @@ def choices():
 
 
 if __name__ == "__main__":
-    choices()
+    # choices()
     pass
